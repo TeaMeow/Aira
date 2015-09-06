@@ -1,4 +1,17 @@
 <?php
+
+/**
+ * Aira Static Class
+ *
+ * @category  Tools
+ * @package   Aira
+ * @author    Yami Odymel <yamiodymel@gmail.com>
+ * @copyright Copyright (c) 2015
+ * @license   http://opensource.org/licenses/gpl-3.0.html GNU Public License
+ * @link      http://github.com/TeaMeow/Aira
+ * @version   1.0
+ **/
+
 class Aira
 {
     /** Die if we catched an exception. */
