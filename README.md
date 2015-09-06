@@ -12,7 +12,27 @@ Aira is a static class, so you don't need to construst it.
 Aira::FUNCTION()
 ```
 
-## First - Add the error codes.
+## First - The error handler.
+
+An Aira handler is highly recommended, 
+
+Aira will directly `exit()` if there's no error handler setted.
+
+```php
+Aira::SetHandler('HANDLER_FUNCTION_NAME');
+```
+
+Aira will pass the following two arguments,
+
+`$Msg` and `$ErrorCode` is the error message and the error code that you setted before,
+
+the handler will be called once the error occurred.
+
+```
+HANDLER($Msg, $ErrorCode);
+```
+
+## Second - Add the error codes.
 
 You must add the error codes and the error messages before you use Aira,
 
@@ -23,7 +43,7 @@ Aira::ErrorCode(['ERROR_CODE'   => 'Error message.',
                  'LOGIN_FAILED' => 'Hey, you entered the wrong password.']);
 ```
 
-## Second - Prepare to die.
+## Thrid - Prepare to die.
 
 **Aira can only handle the known errors**, *and false will be returned by default*.
 
@@ -42,7 +62,7 @@ if(!$Login)
     return Aira::Add('LOGIN_FAILED');
 ```
 
-## Third - Deal with the end.
+## Fourth - Deal with the end.
 
 Here's three ways to deal with it once the `Aira::Add()` was called,
 
