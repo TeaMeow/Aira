@@ -1,136 +1,63 @@
+<p align="center">
+  <img src="http://imgur.com/"/>
+</p>
+<p align="center">
+  <i>The way about how you die.</i>
+</p>
+
+&nbsp;
+
 # Aira
-Sometimes you might need to return a false,
 
-but sometimes, you might want to return an error message,
+艾拉是一個用來在 PHP 中回傳錯誤訊息的好選擇，
 
-this is Aira should handle.
+倘若你有時候可能要回傳 `False`，有時候又希望是錯誤訊息，這個時候你就可以使用艾拉。
 
-#Usage
-Aira is a static class, so you don't need to construst it.
+&nbsp;
 
-```php
-Aira::FUNCTION()
-```
+# 特色
 
-## First - The error handler.
+1. 支援錯誤代碼。
 
-An Aira handler is highly recommended, 
+2. 可只回傳 False。
 
-Aira will directly `exit()` if there's no error handler setted.
+3. 支援自訂錯誤監聽者。
 
-```php
-Aira::SetHandler('HANDLER_FUNCTION_NAME');
-```
+4. 隨時決定要直接輸出錯誤，或者是僅 False。
 
-Aira will pass the following two arguments,
+&nbsp;
 
-`$Msg` and `$ErrorCode` is the error message and the error code that you setted before,
+# 範例
 
-the handler will be called once the error occurred.
-
-```
-HANDLER($Msg, $ErrorCode);
-```
-
-## Second - Add the error codes.
-
-You must add the error codes and the error messages before you use Aira,
-
-here's how you add it.
+假設你正在設計一套登入系統，首先你需要先自定錯誤代碼。
 
 ```php
-Aira::ErrorCode(['ERROR_CODE'   => 'Error message.',
-                 'LOGIN_FAILED' => 'Hey, you entered the wrong password.']);
+Aira::addError('USERNAME_USED', '帳號已被使用。', 409);
 ```
 
-## Thrid - Prepare to die.
+&nbsp;
 
-**Aira can only handle the known errors**, *and false will be returned by default*.
-
-You should put it to the place where you know the error will occurred,
-
-here's how you call it once the error occurred.
+接著你可以把艾拉放入你的登入函式中，就像這樣。
 
 ```php
-return Aira::Add('ERROR_CODE');
-```
-
-For example, if you are dealing with a login system, you should use it like this:
-
-```php
-if(!$Login)
-    return Aira::Add('LOGIN_FAILED');
-```
-
-## Fourth - Deal with the end.
-
-Here's three ways to deal with it once the `Aira::Add()` was called,
-
-1. **Return false**.
-2. Exit and output the **last error message**.
-3. Exit and output the error message if anything **happened next**.
-
-If you don't get it, we'll talk about that later, 
-
-and here's how you switch to the three modes. Easy.
-
-```php
-
-/** Exit and output the error message if any error occurred AFTER this code. */
-Aira::EndFrom();
-
-/** Exit and output the error message if any error occurred BEFORE this code. */
-Aira::EndHere();
-
-/** Just keep going, no matter what happened. (Aira will only return FALSE.) */
-Aira::Alive();
-```
-
-## Real Example
-
-Let's see how should you use it and WHEN.
-
-A login system will be a great example.
-
-```php
-/** 1.Add the error code first */
-Aira::ErrorCode(['LOGIN_FAILED' => 'Login failed, the username or the password was incorrect.']);
-
-/** 2.Find a moment to die */
-function Login($Usr, $Pw)
+function login($username, $password)
 {
-    /** Call Aira if login failed */
-    if($Failed)
-      return Aira::Add('LOGIN_FAILED');
+
+    ... 程式 ...
+
+
+    if($failed)
+        return Aira::error('USERNAME_USED');
 }
-
-/** Let's login now no matter if logged in failed */
-$User->Login($Username, $Password);
-
-/** The error message will be ouputted if user logged in failed */
-Aira::EndHere();
-  
-/** Nothing will be ended if user logged in successfully! */
-exit('Logged In successfully!');
 ```
 
-## Others
+&nbsp;
 
-You can detect the last error code like this.
-
-```php
-Aira::Equals('ERROR_CODE');
-```
-
-For example if you want to know the last error is LOGIN_FAILED or something else.
+之後你如果要登入，就先在登入函式呼叫前新增一段用以切換艾拉模式的程式。
 
 ```php
-if(Aira::Equals('LOGIN_FAILED'))
-{
-    exit('You failed at the login part right?');
-}
-elseif(Aira::Equals('LOGIN_NOTHING'))
-{
-    exit('Are you tried to what?');
-}
+/** 開始擷取，接下來如果擷取到艾拉錯誤，就直接結束程式 */
+Aira::capture();
+
+login($username, $password);
 ```
