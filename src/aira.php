@@ -194,9 +194,9 @@ class Aira
         if(self::$lastError !== false)
             self::errorOccurred(self::$lastError['extraData'], self::$lastError['showName']);
     }
-    
-    
-    
+
+
+
     static function endHere($errorName, $extraData = null, $showName = false)
     {
         self::error($errorName, $extraData, $showName);
@@ -275,9 +275,21 @@ class Aira
 
     static function successed($successName, $extraData = null, $showName = false)
     {
-        $success     = self::$successNames[$successName];
-        $message     = $success['message'];
-        $httpCode    = $success['httpCode'];
+        $successDefined = isset(self::$successNames[$successName]);
+
+        if($successDefined)
+        {
+            $success  = self::$successNames[$successName];
+            $message  = $success['message'];
+            $httpCode = $success['httpCode'];
+        }
+        else
+        {
+            $success  = 'UNKNOW_AIRA';
+            $message  = 'A undefined Aira event: ' . $successName . '.';
+            $httpCode = 404;
+        }
+
 
         if(self::$successHandler === null)
         {
