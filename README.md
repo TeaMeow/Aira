@@ -42,9 +42,7 @@ Aira::addError('USERNAME_USED', '帳號已被使用。', 409);
 ```php
 function login($username, $password)
 {
-
     ... 程式 ...
-
 
     if($failed)
         return Aira::error('USERNAME_USED');
