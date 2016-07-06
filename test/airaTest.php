@@ -49,5 +49,19 @@ class AiraTest extends \PHPUnit_Framework_TestCase
     {
         Aira::alive();
     }
+
+    function testSetErrorHandler()
+    {
+        Aira::setErrorHandler(function()
+        {
+        });
+    }
+
+    function testSetSuccessHandler()
+    {
+        Aira::setSuccessHandler(function()
+        {
+        });
+    }
 }
 ?>

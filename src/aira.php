@@ -235,9 +235,10 @@ class Aira
             else
                 exit(json_encode($data, JSON_NUMERIC_CHECK));
         }
-
-
-        call_user_func_array(self::$errorHandler, [$errorName, $message, $httpCode]);
+        else
+        {
+            call_user_func_array(self::$errorHandler, [$errorName, $message, $httpCode]);
+        }
     }
 
 
@@ -277,8 +278,10 @@ class Aira
             else
                 exit(json_encode($data, JSON_NUMERIC_CHECK));
         }
-
-        call_user_func_array(self::$successHandler, [$successName, $message, $httpCode]);
+        else
+        {
+            call_user_func_array(self::$successHandler, [$successName, $message, $httpCode]);
+        }
     }
 
 
