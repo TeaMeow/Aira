@@ -231,7 +231,7 @@ class Aira
                 $data['code'] = $errorName;
 
             if(defined('UNIT_TESTING'))
-                echo json_encode($data, JSON_NUMERIC_CHECK)
+                echo json_encode($data, JSON_NUMERIC_CHECK);
             else
                 exit(json_encode($data, JSON_NUMERIC_CHECK));
         }
@@ -273,7 +273,7 @@ class Aira
                 $data['code'] = $successName;
 
             if(defined('UNIT_TESTING'))
-                echo json_encode($data, JSON_NUMERIC_CHECK)
+                echo json_encode($data, JSON_NUMERIC_CHECK);
             else
                 exit(json_encode($data, JSON_NUMERIC_CHECK));
         }
