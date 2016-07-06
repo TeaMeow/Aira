@@ -15,9 +15,24 @@ class AiraTest extends \PHPUnit_Framework_TestCase
         Aira::addSuccess('TEST', '測試。', 200);
     }
 
+    function testEndOrSuccess()
+    {
+        Aira::endOrSuccess('TEST');
+    }
+
     function testError()
     {
         Aira::error('INVALID_TEST');
+    }
+
+    function testEmptyError()
+    {
+        Aira::error('NEP');
+    }
+
+    function testErrorWithExtraData()
+    {
+        Aira::error('TEST', ['foo' => 'bar']);
     }
 
     function testSuccess()
@@ -25,9 +40,14 @@ class AiraTest extends \PHPUnit_Framework_TestCase
         Aira::success('TEST');
     }
 
-    function testEndOrSuccess()
+    function testSuccessWithExtraData()
     {
-        Aira::endOrSuccess('TEST');
+        Aira::success('TEST', ['foo' => 'bar']);
+    }
+
+    function testEmptySuccess()
+    {
+        Aira::success('NEP');
     }
 
     function testTheStart()
