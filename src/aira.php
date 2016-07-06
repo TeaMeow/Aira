@@ -2,8 +2,6 @@
 class Aira
 {
     /**
-     * Error Names
-     *
      * Stores the error names here.
      *
      * @var array
@@ -12,8 +10,6 @@ class Aira
     static $errorNames = [];
 
     /**
-     * Success Names
-     *
      * Stores the success names here.
      *
      * @var array
@@ -22,8 +18,6 @@ class Aira
     static $successNames = [];
 
     /**
-     * Errors
-     *
      * Occurred errors will be stored in here.
      *
      * @var array
@@ -32,8 +26,6 @@ class Aira
     static $errors     = [];
 
     /**
-     * Last Error
-     *
      * The name of the last error.
      *
      * @var bool|string
@@ -42,8 +34,6 @@ class Aira
     static $lastError  = false;
 
     /**
-     * Error Handler
-     *
      * The name of the error handler.
      *
      * @var null|string
@@ -52,8 +42,6 @@ class Aira
     static $errorHandler    = null;
 
     /**
-     * Success Handler
-     *
      * The name of the error handler.
      *
      * @var null|string
@@ -62,8 +50,6 @@ class Aira
     static $successHandler    = null;
 
     /**
-     * Die
-     *
      * Call the error handler if we can die, or just ignore the error when this is false.
      *
      * @var bool
@@ -75,8 +61,6 @@ class Aira
 
 
     /**
-     * Add
-     *
      * Add a error name with the message, and a http status code.
      *
      * @param string $errorName   The name of the error, USERNAME_USED for example.
@@ -94,8 +78,6 @@ class Aira
 
 
     /**
-     * Error
-     *
      * Throw an error.
      *
      * @param string $errorName   The name of the error.
@@ -118,8 +100,6 @@ class Aira
 
 
     /**
-     * Success
-     *
      * Call the success handler with the success code name.
      */
 
@@ -132,8 +112,6 @@ class Aira
 
 
     /**
-     * Add Success
-     *
      * Add a success code.
      *
      * @param string $successName   The name of the success, EMAIL_AVAILABLE for example.
@@ -151,8 +129,6 @@ class Aira
 
 
     /**
-     * End Or Success
-     *
      * Call theEnd() before calling the success().
      *
      * @param string $successName   The name of the success code.
@@ -168,8 +144,6 @@ class Aira
 
 
     /**
-     * The Start
-     *
      * Capture all the errors which below this function.
      */
 
@@ -182,8 +156,6 @@ class Aira
 
 
     /**
-     * The End
-     *
      * Capture all the errors which happened after this function.
      */
 
@@ -206,8 +178,6 @@ class Aira
 
 
     /**
-     * Get Error
-     *
      * Returns an error information by the error name.
      *
      * @param string $errorName  The name of the error.
@@ -223,8 +193,6 @@ class Aira
 
 
     /**
-     * Alive
-     *
      * Keep Aira alive, so the program won't stop when any error occurred.
      */
 
@@ -237,8 +205,6 @@ class Aira
 
 
     /**
-     * Error Occurred
-     *
      * Deal with the error, like call the error handler here.
      */
 
@@ -328,8 +294,6 @@ class Aira
 
 
     /**
-     * Set Error Handler
-     *
      * Set the error handler.
      *
      * @param string $handlerName   The name of the error handler function.
@@ -344,8 +308,6 @@ class Aira
 
 
     /**
-     * Set Success Handler
-     *
      * Set the success handler.
      *
      * @param string $handlerName   The name of the success handler function.
