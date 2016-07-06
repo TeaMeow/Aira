@@ -233,7 +233,7 @@ class Aira
             if(defined('UNIT_TESTING'))
                 echo json_encode($data, JSON_NUMERIC_CHECK);
             else
-                exit(json_encode($data, JSON_NUMERIC_CHECK));
+                exit(json_encode($data, JSON_NUMERIC_CHECK)); // @codeCoverageIgnore
         }
         else
         {
@@ -276,7 +276,7 @@ class Aira
             if(defined('UNIT_TESTING'))
                 echo json_encode($data, JSON_NUMERIC_CHECK);
             else
-                exit(json_encode($data, JSON_NUMERIC_CHECK));
+                exit(json_encode($data, JSON_NUMERIC_CHECK)); // @codeCoverageIgnore
         }
         else
         {
