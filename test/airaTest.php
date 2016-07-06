@@ -75,6 +75,8 @@ class AiraTest extends \PHPUnit_Framework_TestCase
         Aira::setErrorHandler(function()
         {
         });
+
+        Aira::error('NEP');
     }
 
     function testSetSuccessHandler()
@@ -82,6 +84,8 @@ class AiraTest extends \PHPUnit_Framework_TestCase
         Aira::setSuccessHandler(function()
         {
         });
+
+        Aira::success('NEP');
     }
 }
 ?>
