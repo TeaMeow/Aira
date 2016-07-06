@@ -230,7 +230,10 @@ class Aira
             if(self::$lastError['showName'])
                 $data['code'] = $errorName;
 
-            exit(json_encode($data, JSON_NUMERIC_CHECK));
+            if(defined('UNIT_TESTING'))
+                echo json_encode($data, JSON_NUMERIC_CHECK)
+            else
+                exit(json_encode($data, JSON_NUMERIC_CHECK));
         }
 
 
@@ -269,7 +272,10 @@ class Aira
             if($showName)
                 $data['code'] = $successName;
 
-            exit(json_encode($data, JSON_NUMERIC_CHECK));
+            if(defined('UNIT_TESTING'))
+                echo json_encode($data, JSON_NUMERIC_CHECK)
+            else
+                exit(json_encode($data, JSON_NUMERIC_CHECK));
         }
 
         call_user_func_array(self::$successHandler, [$successName, $message, $httpCode]);

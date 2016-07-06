@@ -1,6 +1,8 @@
 <?php
 require 'aira.php';
 
+define('UNIT_TESTING', true);
+
 class AiraTest extends \PHPUnit_Framework_TestCase
 {
     function testAdd()
