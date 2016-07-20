@@ -92,10 +92,7 @@ class Aira
         self::$lastError['extraData'] = $extraData;
         self::$lastError['showName']  = $showName;
 
-        if(self::$die)
-            return self::errorOccurred($extraData, $showName);
-
-        return false;
+        return self::errorOccurred($extraData, $showName);
     }
 
 
