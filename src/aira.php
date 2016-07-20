@@ -93,7 +93,9 @@ class Aira
         self::$lastError['showName']  = $showName;
 
         if(self::$die)
-            self::errorOccurred($extraData, $showName);
+            return self::errorOccurred($extraData, $showName);
+
+        return false;
     }
 
 
@@ -106,6 +108,8 @@ class Aira
     static function success($successName, $extraData = null, $showName = false)
     {
         self::successed($successName, $extraData, $showName);
+
+        return true;
     }
 
 
